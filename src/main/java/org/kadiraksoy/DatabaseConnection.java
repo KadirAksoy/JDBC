@@ -8,6 +8,9 @@ import java.util.logging.Logger;
 
 public class DatabaseConnection {
 
+
+
+    //Database connection
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/jdbc";
         String name = "root";
@@ -19,11 +22,6 @@ public class DatabaseConnection {
             Class.forName("com.mysql.jdbc.Driver");
 
             Connection connection = DriverManager.getConnection(url, name, password);
-
-            
-            String sorgu = "SELECT * FROM user";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sorgu);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
