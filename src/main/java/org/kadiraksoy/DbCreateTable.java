@@ -15,9 +15,10 @@ public class DbCreateTable {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, name, password);
 
-            String sorgu = "CREATE TABLE new-table (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50))";
+            String query = "CREATE TABLE new-table (id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(50))";
+
             Statement statement = connection.createStatement();
-            statement.executeUpdate(sorgu);
+            statement.executeUpdate(query);
 
             System.out.println("The new table was created successfully.");
 
