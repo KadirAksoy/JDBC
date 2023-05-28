@@ -4,31 +4,28 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-public class DbInsertValue {
+public class DbUpdateValue {
 
     public static void main(String[] args) {
-
         String url = "jdbc:mysql://localhost:3306/jdbc";
         String name = "root";
-        String password= "1234";
+        String password = "1234";
 
         try {
-
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(url, name, password);
 
-            String query = "INSERT INTO user (username, email) VALUES (?, ?)";
+            String query = "UPDATE user SET email = ? WHERE username = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, "kadir_baran");
-            preparedStatement.setString(2, "aksoy@email.com");
+            preparedStatement.setString(1, "kadir@example.com");
+            preparedStatement.setString(2, "baran");
             preparedStatement.executeUpdate();
 
-            System.out.println("User added successfully\n.");
+            System.out.println("The user has been successfully updated.");
 
             preparedStatement.close();
             connection.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }

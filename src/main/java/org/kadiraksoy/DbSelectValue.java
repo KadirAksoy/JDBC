@@ -16,12 +16,12 @@ public class DbSelectValue {
         try {
             // JDBC driver
             Class.forName("com.mysql.jdbc.Driver");
-
             // connect to databases
             Connection connection = DriverManager.getConnection(url, name, password);
 
             // Prepare and run the query
             String query = "SELECT * FROM user";
+
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
